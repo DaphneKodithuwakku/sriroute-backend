@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /tripPlans/{planId} {
+      allow read, write: if request.auth != null;
+    }
+    match /locations/{doc} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == 'admin-id';
+    }
+  }
+}
