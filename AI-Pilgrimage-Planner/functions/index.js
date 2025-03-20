@@ -62,3 +62,13 @@ async function generatePlan(religion, budget, days, region) {
         };
       }
   
+      return {
+        planId: uuidv4(),
+        locations: plan,
+        totalCost,
+        duration: totalDuration
+      };
+    } catch (error) {
+      throw new Error(`Error generating plan: ${error.message}`);
+    }
+  }
