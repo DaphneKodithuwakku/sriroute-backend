@@ -55,7 +55,7 @@ async function generatePlan(religion, budget, days, region) {
     throw new Error('Missing required fields');
   }
 
-  // Initialize totals before filtering
+  // Inialize totals before filtering
   let totalCost = 0;
   let totalDuration = 0;
   let plan = [];
