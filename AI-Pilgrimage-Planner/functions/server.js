@@ -51,6 +51,9 @@ async function generatePlan(religion, budget, days, region) {
   if (!['Buddhism', 'Islam', 'Hinduism', 'Christianity'].includes(religion)) {
     throw new Error('Invalid religion specified');
   }
+  if (!budget || !days || !region) {
+    throw new Error('Missing required fields');
+  }
 
   // Inialize totals before filtering
   let totalCost = 0;
