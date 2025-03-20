@@ -50,7 +50,7 @@ async function generatePlan(religion, budget, days, region) {
       return {
         planId: uuidv4(),
         locations: [],
-        totalCost: 5000,
+        totalCost: 0,
         duration: 0,
         message: 'No viable trip plan found within the given constraints.'
       };
