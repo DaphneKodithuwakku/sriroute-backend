@@ -31,3 +31,5 @@ async function generatePlan(religion, budget, days, region) {
       .where('religion', '==', religion)
       .where('region', '==', region)
       .get();
+
+      let plan = [];
