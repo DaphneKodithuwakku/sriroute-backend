@@ -35,7 +35,16 @@ const locations = [
     imageUrl: 'path/to/nallur-kovil.jpg',
     coordinates: { lat: 9.6616, lng: 80.0213 }
   },
-  
+  {
+    name: 'St. Anthony’s Shrine',
+    religion: 'Christianity',
+    region: 'Colombo',
+    description: 'A popular Catholic church and pilgrimage site.',
+    costEstimate: 200,
+    travelTime: 1,
+    imageUrl: 'path/to/st-anthonys.jpg',
+    coordinates: { lat: 6.9271, lng: 79.8612 }
+  }
 ];
 
 async function generatePlan(religion, budget, days, region) {
