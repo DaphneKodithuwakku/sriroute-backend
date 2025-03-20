@@ -25,6 +25,16 @@ const locations = [
     imageUrl: 'path/to/jami-ul-alfar.jpg',
     coordinates: { lat: 6.9389, lng: 79.8498 }
   },
+  {
+    name: 'Nallur Kandaswamy Kovil',
+    religion: 'Hinduism',
+    region: 'Jaffna',
+    description: 'A significant Hindu temple dedicated to Lord Murugan.',
+    costEstimate: 400,
+    travelTime: 2,
+    imageUrl: 'path/to/nallur-kovil.jpg',
+    coordinates: { lat: 9.6616, lng: 80.0213 }
+  },
   
 ];
 
