@@ -14,3 +14,6 @@ admin.initializeApp({
   credential: admin.credential.cert(require('./serviceAccountKey.json')),
   databaseURL: 'https://ai-planner-f7964.firebaseio.com'
 });
+
+const db = admin.firestore();
+app.use(express.json());
