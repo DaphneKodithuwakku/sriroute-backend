@@ -33,3 +33,32 @@ async function generatePlan(religion, budget, days, region) {
       .get();
 
       let plan = [];
+      let totalCost = 0;
+      let totalDuration = 0;
+
+      for (let doc of locationsSnapshot.docs) {
+        const location = doc.data();
+        if (totalCost + location.costEstimate <= budget && totalDuration + location.travelTime <= days * 24) {
+          plan.push({
+            name: location.name,
+            religion: location.religion,
+            cost: location.costEstimate,
+            duration: location.travelTime,
+            description: location.description || '',
+            imageUrl: location.imageUrl || ''
+          });
+          totalCost += location.costEstimate;
+          totalDuration += location.travelTime;
+        }
+      } 
+
+      if (plan.length === 0) {
+        return {
+          planId: uuidv4(),
+          locations: [],
+          totalCost: 5000,
+          duration: 0,
+          message: 'No viable trip plan found within the given constraints.'
+        };
+      }
+  
