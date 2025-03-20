@@ -4,6 +4,29 @@ const app = express();
 
 app.use(express.json());
 
+const locations = [
+  {
+    name: 'Jaya Sri Maha Bodhi',
+    religion: 'Buddhism',
+    region: 'Anuradhapura',
+    description: 'A sacred fig tree believed to be a sapling from the Bodhi tree.',
+    costEstimate: 500,
+    travelTime: 2,
+    imageUrl: 'path/to/jaya-sri-maha-bodhi.jpg',
+    coordinates: { lat: 8.3452, lng: 80.3963 }
+  },
+  {
+    name: 'Jami Ul-Alfar Mosque', 
+    religion: 'Islam',
+    region: 'Colombo',
+    description: 'A historic mosque known for its red and white color scheme.',
+    costEstimate: 300,
+    travelTime: 1,
+    imageUrl: 'path/to/jami-ul-alfar.jpg',
+    coordinates: { lat: 6.9389, lng: 79.8498 }
+  },
+  
+];
 
 async function generatePlan(religion, budget, days, region) {
   if (!['Buddhism', 'Islam', 'Hinduism', 'Christianity'].includes(religion)) {
