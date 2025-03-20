@@ -17,3 +17,17 @@ admin.initializeApp({
 
 const db = admin.firestore();
 app.use(express.json());
+
+async function generatePlan(religion, budget, days, region) {
+  try {
+    if (!['Buddhism', 'Islam', 'Hinduism', 'Christianity'].includes(religion)) {
+      throw new Error('Invalid religion specified');
+    }
+    if (!budget || !days || !region) {
+      throw new Error('Missing required fields');
+    }
+
+    const locationsSnapshot = await db.collection('locations')
+      .where('religion', '==', religion)
+      .where('region', '==', region)
+      .get();
