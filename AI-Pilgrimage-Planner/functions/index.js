@@ -15,7 +15,7 @@ app.use(express.json());
 async function generatePlan(religion, budget, days, region) {
   try {
     if (!['Buddhism', 'Islam', 'Hinduism', 'Christianity'].includes(religion)) {
-      throw new Error('Invalid religion specified');
+      throw new Error('Invalid required fields');
     }
     if (!budget || !days || !region) {
       throw new Error('Missing required fields');
