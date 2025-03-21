@@ -67,3 +67,14 @@ async function generatePlan(religion, budget, days, region) {
       throw new Error(`Error generating plan: ${error.message}`);
     }
   }
+
+  app.post('/api/generate-plan', async (req, res) => {
+    try {
+      const { religion, budget, days, region } = req.body;
+      const plan = await generatePlan(religion, budget, days, region);
+      await db.collection('tripPlans').doc(plan.planId).set(plan);
+      res.status(200).json(plan);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
