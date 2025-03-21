@@ -17,14 +17,5 @@ module.exports = {
     "no-unused-vars": "warn",
     "require-jsdoc": "off"
   },
-  overrides: [
-    {
-      files: ["**/*.spec.*"],
-      env: {
-        mocha: true,
-      },
-      rules: {},
-    },
-  ],
-  globals: {},
+  
 };
