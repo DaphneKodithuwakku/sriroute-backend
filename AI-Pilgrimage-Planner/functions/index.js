@@ -78,3 +78,28 @@ async function generatePlan(religion, budget, days, region) {
       res.status(400).json({ error: error.message });
     }
   });
+
+  app.get('/api/locations', async (req, res) => {
+    try {
+      const snapshot = await db.collection('locations').get();
+      const locations = snapshot.docs.map(doc => doc.data());
+      res.status(200).json(locations);
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch locations' });
+    }
+  });
+  
+  app.get('/api/plan/:planId', async (req, res) => {
+    try {
+      const planId = req.params.planId;
+      const planDoc = await db.collection('tripPlans').doc(planId).get();
+      if (!planDoc.exists) {
+        return res.status(404).json({ error: 'Plan not found' });
+      }
+      res.status(200).json(planDoc.data());
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to fetch plan' });
+    }
+  });
+  
+  exports.api = functions.https.onRequest(app);
